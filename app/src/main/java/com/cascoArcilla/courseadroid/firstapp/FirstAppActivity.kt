@@ -14,7 +14,6 @@ class FirstAppActivity : AppCompatActivity() {
         setContentView(R.layout.activity_first_app)
         // Se llama al arrancar la pantalla
         val btnPushMe = findViewById<AppCompatButton>(R.id.btnPushMe)
-        val btnToContainer = findViewById<AppCompatButton>(R.id.btnContainer)
         val etName = findViewById<AppCompatEditText>(R.id.etName)
 
         btnPushMe.setOnClickListener {
@@ -27,11 +26,6 @@ class FirstAppActivity : AppCompatActivity() {
                 Log.i("message", "No hay nombre")
             }
 
-        }
-
-        btnToContainer.setOnClickListener {
-            val intent = Intent(this, ContainerActivity::class.java)
-            startActivity(intent)
         }
     }
 }

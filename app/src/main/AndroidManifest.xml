@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".firstapp.ContainerActivity"
+            android:name=".contador.ContainerActivity"
             android:exported="false" />
         <activity
             android:name=".firstapp.ResultActivity"
