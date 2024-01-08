@@ -27,10 +27,14 @@ class MenuActivity : AppCompatActivity() {
         var intent : Intent
 
         when(app){
-            APPS.get(0) -> intent = Intent(this, FirstAppActivity::class.java)
-            APPS.get(1) -> intent = Intent(this, ImcCalculatorActivity::class.java)
+            APPS.get(0) -> {
+                intent = Intent(this, FirstAppActivity::class.java)
+                startActivity(intent)
+            }
+            APPS.get(1) -> {
+                intent = Intent(this, ImcCalculatorActivity::class.java)
+                startActivity(intent)
+            }
         }
-
-        startActivity(intent)
     }
 }
