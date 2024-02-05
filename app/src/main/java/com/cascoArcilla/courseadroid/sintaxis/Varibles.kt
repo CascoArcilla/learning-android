@@ -9,7 +9,15 @@ fun main() {
 //    isMayor(18)
 //    isMayor(17)
 
-//    var arr = listOf("apple", "bottle", 21, 25)
+    var arr = listOf("apple", "bottle", 21, 25)
+    val lista : List<Float> = listOf(23.2f, 24.5f)
+    println(lista[0])
+    println(lista[1])
+    if (30f >= lista[0] && 30f <= lista[1]){
+        println("yes")
+    } else{
+        println("nop")
+    }
 //    for(item in arr){
 //        println(item)
 //    }
@@ -24,7 +32,7 @@ fun main() {
 //    getMonth(58)
 //    getMonth(18)
 
-    nulles()
+//    nulles()
 }
 
 fun nulles(){

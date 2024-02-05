@@ -159,8 +159,9 @@ class ImcCalculatorActivity : AppCompatActivity() {
 
     private fun calculateImc(): Float {
         var df = DecimalFormat("#.##")
+        var weight = etWeight.text.toString()
         var heigthM = personHeight / 100;
-        var result = personWeight / (heigthM * heigthM)
+        var result = weight.toFloat() / (heigthM * heigthM)
         var imc = df.format(result)
         return imc.toFloat()
         //Log.i("resultados", "El IMC es de $imc")
