@@ -17,25 +17,29 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".imcapp.ImcCalculatorActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".MenuActivity" />
         <activity
             android:name=".imcapp.ResultIMCActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".imcapp.ImcCalculatorActivity" />
         <activity
             android:name=".contador.ContainerActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".MenuActivity" />
         <activity
             android:name=".firstapp.ResultActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".firstapp.FirstAppActivity" />
         <activity
             android:name=".firstapp.FirstAppActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".MenuActivity" />
     </application>
 
 </manifest>
