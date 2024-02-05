@@ -1,7 +1,9 @@
 package com.cascoArcilla.courseadroid.imcapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -15,6 +17,10 @@ import com.google.android.material.slider.RangeSlider
 import java.text.DecimalFormat
 
 class ImcCalculatorActivity : AppCompatActivity() {
+    private var personHeight: Float = 150f
+    private var personWeight: Int = 60
+    private var personAge: Int = 22
+
     private lateinit var clContainer: ConstraintLayout
 
     private lateinit var viewMale: CardView
@@ -27,14 +33,16 @@ class ImcCalculatorActivity : AppCompatActivity() {
     private lateinit var etWeight: EditText
     private lateinit var btnLessWeight: FloatingActionButton
     private lateinit var btnAddWeight: FloatingActionButton
-    private var personWeight: Int = 60
 
     private lateinit var etAge: EditText
     private lateinit var btnLessAge: FloatingActionButton
     private lateinit var btnAddAge: FloatingActionButton
-    private var personAge: Int = 22
 
     private lateinit var buttonCalculate: Button
+
+    companion object {
+        const val KEY_IMC = "RESULT_IMC"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -76,9 +84,7 @@ class ImcCalculatorActivity : AppCompatActivity() {
         }
 
         rsHeight.addOnChangeListener { _, value, _ ->
-            val demicalFormat = DecimalFormat("#.##")
-            val result = demicalFormat.format(value)
-            tvHeight.text = "$result cm"
+            edithHeight(value)
         }
 
         btnLessWeight.setOnClickListener {
@@ -97,7 +103,8 @@ class ImcCalculatorActivity : AppCompatActivity() {
         }
 
         buttonCalculate.setOnClickListener {
-            calculateImc()
+            var imc = calculateImc()
+            navigateToResult(imc)
         }
     }
 
@@ -131,6 +138,14 @@ class ImcCalculatorActivity : AppCompatActivity() {
         this.etWeight.text = newEditWeight
     }
 
+    private fun edithHeight(value: Float) {
+        val demicalFormat = DecimalFormat("#.##")
+        val result = demicalFormat.format(value)
+        personHeight = value
+        rsHeight.setValues(value)
+        tvHeight.text = "$result cm"
+    }
+
     private fun alterAge(isLess: Boolean) {
         var actualAge = this.etAge.text.toString()
         this.personAge = if (isLess) actualAge.toInt() - 1 else actualAge.toInt() + 1
@@ -142,11 +157,24 @@ class ImcCalculatorActivity : AppCompatActivity() {
         this.etAge.text = newEdithAge
     }
 
-    private fun calculateImc() {
+    private fun calculateImc(): Float {
+        var df = DecimalFormat("#.##")
+        var heigthM = personHeight / 100;
+        var result = personWeight / (heigthM * heigthM)
+        var imc = df.format(result)
+        return imc.toFloat()
+        //Log.i("resultados", "El IMC es de $imc")
+    }
+
+    private fun navigateToResult(imc: Float) {
+        var intentResultIMC = Intent(this, ResultIMCActivity::class.java)
+        intentResultIMC.putExtra(KEY_IMC, imc)
+        startActivity(intentResultIMC)
     }
 
     private fun initUi() {
         setGanderColor()
+        edithHeight(personHeight)
         edithWight()
         edithAge()
     }
