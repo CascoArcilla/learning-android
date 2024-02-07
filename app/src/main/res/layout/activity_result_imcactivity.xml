@@ -56,13 +56,14 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/tvMessageImc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="Tu peso esta exactamente donde deberia estar, mantente ahí"
                     android:textAlignment="center"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    tools:text="Tu peso esta exactamente donde deberia estar, mantente ahí" />
             </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.cardview.widget.CardView>
 

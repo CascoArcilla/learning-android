@@ -20,12 +20,12 @@ class ImcCalculatorActivity : AppCompatActivity() {
     private var personHeight: Float = 150f
     private var personWeight: Int = 60
     private var personAge: Int = 22
+    private var isMaleSelected: Boolean = true
 
     private lateinit var clContainer: ConstraintLayout
 
     private lateinit var viewMale: CardView
     private lateinit var viewFamale: CardView
-    private var isMaleSelected: Boolean = true
 
     private lateinit var tvHeight: TextView
     private lateinit var rsHeight: RangeSlider
