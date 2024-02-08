@@ -7,9 +7,10 @@ import androidx.appcompat.app.AppCompatActivity
 import com.cascoArcilla.courseadroid.contador.ContainerActivity
 import com.cascoArcilla.courseadroid.firstapp.FirstAppActivity
 import com.cascoArcilla.courseadroid.imcapp.ImcCalculatorActivity
+import com.cascoArcilla.courseadroid.takstodo.TasksToDoActivity
 
 class MenuActivity : AppCompatActivity() {
-    private val APPS = listOf<String>("saludo", "imc", "contador")
+    private val APPS = listOf<String>("saludo", "imc", "contador", "tareas")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,6 +24,9 @@ class MenuActivity : AppCompatActivity() {
 
         val buttonAppContainer = findViewById<Button>(R.id.btnToAppContainer)
         buttonAppContainer.setOnClickListener { navigateTo(APPS[2]) }
+
+        val buttonAppTaks = findViewById<Button>(R.id.btnToTasks)
+        buttonAppTaks.setOnClickListener { navigateTo(APPS[3]) }
 
     }
 
@@ -40,6 +44,10 @@ class MenuActivity : AppCompatActivity() {
             }
             APPS.get(2) -> {
                 intent = Intent(this, ContainerActivity::class.java)
+                startActivity(intent)
+            }
+            APPS.get(3) -> {
+                intent = Intent(this, TasksToDoActivity::class.java)
                 startActivity(intent)
             }
         }

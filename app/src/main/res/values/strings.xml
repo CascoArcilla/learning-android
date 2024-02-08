@@ -8,8 +8,12 @@
     <string name="calculate">Calcular</string>
     <string name="result_imc">Tu resultado</string>
     <string name="weight_low">Peso bajo</string>
+
     <string name="message_low_weight">Su peso esta por debajo de un nivel adecuado</string>
     <string name="message_normal_weight">Su peso esta exactamente donde deberia estar, mantente ahí</string>
     <string name="message_high_weight">Su peso esta por encima de lo normal, debes tener cuidado</string>
     <string name="message_very_high_weight">Su peso es bastante elevado de lo normal</string>
+
+    <string name="todo_welcome">Cosas por hacer</string>
+    <string name="todo_categorys">Catregorias</string>
 </resources>
