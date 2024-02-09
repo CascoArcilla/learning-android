@@ -16,4 +16,11 @@
 
     <string name="todo_welcome">Cosas por hacer</string>
     <string name="todo_categorys">Catregorias</string>
+    <string name="todo_tasks">Tareas</string>
+
+    <string name="todo_dialog_add_task">Escribe la tarea</string>
+    <string name="todo_dialog_radio_personal">Personal</string>
+    <string name="todo_dialog_radio_business">Negocios</string>
+    <string name="todo_dialog_radio_others">Otros</string>
+    <string name="todo_dialog_btn_add_task">Agregar tarea</string>
 </resources>
