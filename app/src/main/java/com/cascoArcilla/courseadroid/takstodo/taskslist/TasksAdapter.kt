@@ -6,7 +6,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.cascoArcilla.courseadroid.takstodo.ToDoTask
 import com.cascoArcilla.courseadroid.R
 
-class TasksAdapter(private val tasks: List<ToDoTask>, private val onTaskSelcted: (Int) -> Unit) :
+class TasksAdapter(
+    var tasks: List<ToDoTask>,
+    private val changeTaskSelcted: (Int) -> Unit
+) :
     RecyclerView.Adapter<TasksViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TasksViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_task, parent, false)
@@ -19,6 +22,6 @@ class TasksAdapter(private val tasks: List<ToDoTask>, private val onTaskSelcted:
 
     override fun onBindViewHolder(holder: TasksViewHolder, position: Int) {
         holder.render(tasks[position])
-        holder.itemView.setOnClickListener { onTaskSelcted(position) }
+        holder.itemView.setOnClickListener { changeTaskSelcted(position) }
     }
 }

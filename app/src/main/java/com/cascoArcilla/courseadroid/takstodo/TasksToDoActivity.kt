@@ -35,6 +35,7 @@ class TasksToDoActivity : AppCompatActivity() {
     private lateinit var tasksAdapter: TasksAdapter
 
     private lateinit var fbtAddTask: FloatingActionButton
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tasks_to_do)
@@ -76,28 +77,37 @@ class TasksToDoActivity : AppCompatActivity() {
                 updateTasks()
                 dialogCreateTask.hide()
             }
-
-            dialogCreateTask.show()
         }
+
+        dialogCreateTask.show()
     }
 
     private fun initUI() {
-        categoryAdapter = CategoryAdapter(categories)
+        categoryAdapter = CategoryAdapter(categories) { position -> handleCateforySelect(position) }
         rvToDoCategory.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         rvToDoCategory.adapter = categoryAdapter
 
-        tasksAdapter = TasksAdapter(tasks) { position -> onItemSelected(position) }
+        tasksAdapter = TasksAdapter(tasks) { position -> handleItemSelected(position) }
         rvToDoTasks.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         rvToDoTasks.adapter = tasksAdapter
     }
 
-    private fun onItemSelected(position: Int) {
+    private fun handleItemSelected(position: Int) {
         tasks[position].isSelected = !tasks[position].isSelected
         updateTasks()
     }
 
+    private fun handleCateforySelect(position: Int) {
+        categories[position].isSelect = !categories[position].isSelect
+        categoryAdapter.notifyItemChanged(position)
+        updateTasks()
+    }
+
     private fun updateTasks() {
+        val selectedCategories = categories.filter { it.isSelect }
+        val filterTasks: List<ToDoTask> = tasks.filter { selectedCategories.contains(it.category) }
+        tasksAdapter.tasks = filterTasks
         tasksAdapter.notifyDataSetChanged()
     }
 }

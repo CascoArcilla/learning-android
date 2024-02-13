@@ -28,6 +28,7 @@ class TasksViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             cbToDoTask.isChecked = true
             tvToDoNameTask.paintFlags = tvToDoNameTask.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
         } else {
+            cbToDoTask.isChecked = false
             tvToDoNameTask.paintFlags =
                 tvToDoNameTask.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
         }
