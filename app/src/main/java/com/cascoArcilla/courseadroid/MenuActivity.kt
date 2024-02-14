@@ -6,11 +6,12 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.cascoArcilla.courseadroid.contador.ContainerActivity
 import com.cascoArcilla.courseadroid.firstapp.FirstAppActivity
+import com.cascoArcilla.courseadroid.herosapp.HeroListActivity
 import com.cascoArcilla.courseadroid.imcapp.ImcCalculatorActivity
 import com.cascoArcilla.courseadroid.takstodo.TasksToDoActivity
 
 class MenuActivity : AppCompatActivity() {
-    private val APPS = listOf<String>("saludo", "imc", "contador", "tareas")
+    private val APPS = listOf<String>("saludo", "imc", "contador", "tareas", "superheroes")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,26 +29,37 @@ class MenuActivity : AppCompatActivity() {
         val buttonAppTaks = findViewById<Button>(R.id.btnToTasks)
         buttonAppTaks.setOnClickListener { navigateTo(APPS[3]) }
 
+        val buttonHeroList = findViewById<Button>(R.id.btnToHeroApp)
+        buttonHeroList.setOnClickListener { navigateTo(APPS[4]) }
+
     }
 
-    private fun navigateTo(app:String){
-        var intent : Intent
+    private fun navigateTo(app: String) {
+        var intent: Intent
 
-        when(app){
+        when (app) {
             APPS.get(0) -> {
                 intent = Intent(this, FirstAppActivity::class.java)
                 startActivity(intent)
             }
+
             APPS.get(1) -> {
                 intent = Intent(this, ImcCalculatorActivity::class.java)
                 startActivity(intent)
             }
+
             APPS.get(2) -> {
                 intent = Intent(this, ContainerActivity::class.java)
                 startActivity(intent)
             }
+
             APPS.get(3) -> {
                 intent = Intent(this, TasksToDoActivity::class.java)
+                startActivity(intent)
+            }
+
+            APPS.get(4) -> {
+                intent = Intent(this, HeroListActivity::class.java)
                 startActivity(intent)
             }
         }
